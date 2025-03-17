@@ -26,3 +26,4 @@ class Device(Base):
 
     owner = relationship("User", back_populates="devices", lazy="joined")
     params = relationship("ParamData", back_populates="device", cascade="all, delete", lazy="joined")
+    data_analysis = relationship("DataAnalysis", back_populates="device", cascade="all, delete", lazy="joined")
