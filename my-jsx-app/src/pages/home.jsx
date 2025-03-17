@@ -1,7 +1,7 @@
 import React from "react";
 import "../styles/home.css";
-import image from "../images/hamters.jpeg";
-import image2 from "../images/hamter2.png";
+import image from "../images/hamterrm.png";
+import image2 from "../images/hamterrm.png";
 import logo from "../images/logo.png";
 import logotruong from "../images/logotruong.png";
 const Home = () => {
@@ -34,8 +34,7 @@ const Home = () => {
         </div>
         {/* Image */}
         <div className="image-container">
-          <img src={image} className="image image1" />
-          <img src={image2} className="image image2" />
+          <img src={image} className="image1" />
         </div>
       </div>
       <div className="footer">

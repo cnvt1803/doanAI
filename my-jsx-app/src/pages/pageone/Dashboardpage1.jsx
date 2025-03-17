@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "../../styles/pageonecss/Dashboardpage1.css";
-import image from "../../images/hill.png";
+import image from "../../images/hill1.png";
 
 const Dashboardp1 = () => {
   const [selectedFeature, setSelectedFeature] = useState(null);
@@ -26,7 +26,7 @@ const Dashboardp1 = () => {
             <p className="line1">
               Always be meticulous when taking care of your hamster.
             </p>
-            <p className="linetext">🌡️ +25°C Outdoor Temperature</p>
+            <p className="linetext">🌡️ {temperature}°C Outdoor Temperature</p>
             <p className="linetext">☁️ Fuzzy cloudy weather</p>
           </div>
           <div className="welcome-card-right">
