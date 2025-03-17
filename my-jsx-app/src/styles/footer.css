@@ -1,0 +1,31 @@
+.footer {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 40px;
+    background: rgb(236, 252, 254);
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    border-top: 4px solid #24BEFB; 
+    position: fixed;
+    bottom: 0;
+  }
+  
+  .footer-section {
+    text-align: center;
+    flex: 1;
+  }
+  
+  .footer h3 {
+    font-size: 18px;
+    font-weight: bold;
+  }
+  
+  .footer p {
+    font-size: 14px;
+  }
+  
+  .footer-logo {
+    width: 50px;
+    height: auto;
+  }

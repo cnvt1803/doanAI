@@ -1,0 +1,71 @@
+.headerp1 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  background: white;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  width: calc(100% - 279px); 
+  position: fixed;
+  top: 0;
+  left: 279px; 
+  right: 0;
+  z-index: 1000;
+  height: 88px;
+  border-bottom: 4px solid #24BEFB;
+}
+
+.search-box {
+  margin-left: 30px;
+  padding-left: 15px;
+  width: 600px;
+  padding: 10px;
+  border-radius: 20px;
+  border: 1px solid #ccc;
+  outline: none;
+  font-size: 16px;
+}
+.search-box::placeholder {
+  color: #aaa; 
+  transition: opacity 0.2s ease-in-out;
+}
+
+.search-box:focus::placeholder {
+  opacity: 0; 
+}
+
+.profile {
+  display: flex;
+  align-items: center;
+}
+
+.notification_h {
+  position: relative;
+  margin-right: 15px;
+  cursor: pointer;
+}
+
+.badge_h {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background: red;
+  color: white;
+  padding: 3px 6px;
+  border-radius: 50%;
+  font-size: 12px;
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  right: 30px;
+  border-radius: 15px;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.username {
+  font-weight: bold;
+  margin-right: 40px;
+}
