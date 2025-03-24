@@ -1,0 +1,12 @@
+.page {
+    display: flex;
+    height: 100vh; /* Đảm bảo full chiều cao */
+  }
+  
+  .main {
+    flex-grow: 1;  /* Tự động mở rộng để chiếm hết phần còn lại */
+    width: calc(100% - 250px); /* 250px là chiều rộng của sidebar */
+    overflow-x: hidden;
+    background-color: #ffffff; /* Thêm màu nền nếu cần */
+  }
+  

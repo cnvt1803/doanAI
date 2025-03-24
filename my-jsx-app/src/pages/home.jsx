@@ -1,10 +1,15 @@
 import React from "react";
 import "../styles/home.css";
 import image from "../images/hamterrm.png";
-import image2 from "../images/hamterrm.png";
 import logo from "../images/logo.png";
 import logotruong from "../images/logotruong.png";
+import { useNavigate } from "react-router-dom";
 const Home = () => {
+  const navigate = useNavigate();
+
+  const handleGoNow = () => {
+    navigate("/login");
+  };
   return (
     <div className="container">
       {/* Header */}
@@ -12,7 +17,9 @@ const Home = () => {
         <h1>
           <img src={logo} alt="logo" />
         </h1>
-        <button className="login-btn">Đăng nhập</button>
+        <button className="login-btn" onClick={handleGoNow}>
+          Đăng nhập
+        </button>
       </div>
 
       {/* Content */}
@@ -30,7 +37,9 @@ const Home = () => {
             ....................................................................................................
             ....................................................................................................
           </p>
-          <button className="button">Go Now!</button>
+          <button className="button" onClick={handleGoNow}>
+            Go Now!
+          </button>
         </div>
         {/* Image */}
         <div className="image-container">

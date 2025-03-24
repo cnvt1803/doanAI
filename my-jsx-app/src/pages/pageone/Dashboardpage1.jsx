@@ -1,13 +1,33 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../../styles/pageonecss/Dashboardpage1.css";
 import image from "../../images/hill1.png";
+import grahp from "../../images/grahp.jpg";
 
 const Dashboardp1 = () => {
   const [selectedFeature, setSelectedFeature] = useState(null);
   const [temperature, setTemperature] = useState(25);
   const [humidity, setHumidity] = useState(50);
-  const [lightsOn, setLightsOn] = useState(false);
-  const [sound, setSound] = useState(30);
+  const [lights, setLights] = useState(2000);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch("http://127.0.0.1:5001/api/data");
+        const data = await response.json();
+
+        setTemperature(data.temperature);
+        setHumidity(data.humidity);
+        setLights(data.lights);
+      } catch (error) {
+        console.error("Lỗi khi lấy dữ liệu:", error);
+      }
+    };
+
+    fetchData();
+    const interval = setInterval(fetchData, 5000); // Cập nhật mỗi 5 giây
+
+    return () => clearInterval(interval);
+  }, []);
 
   const handleFeatureClick = (feature) => {
     setSelectedFeature(feature);
@@ -92,28 +112,10 @@ const Dashboardp1 = () => {
             >
               <p>💡</p>
               <label className="switch">
-                <input
-                  type="checkbox"
-                  checked={lightsOn}
-                  onChange={() => setLightsOn(!lightsOn)}
-                />
-                <span className="slider round"></span>
-              </label>
-              <p>Lights</p>
-            </div>
-
-            <div
-              className={`feature ${
-                selectedFeature === "Sound" ? "active" : ""
-              }`}
-              onClick={() => handleFeatureClick("Sound")}
-            >
-              <p>🌡</p>
-              <label className="switch">
                 <input type="checkbox" />
                 <span className="slider round"></span>
               </label>
-              <p>Sound</p>
+              <p>Lights</p>
             </div>
           </div>
 
@@ -136,7 +138,7 @@ const Dashboardp1 = () => {
                   <button
                     className="plus-btn"
                     onClick={() =>
-                      setTemperature((prev) => Math.min(35, prev + 1))
+                      setTemperature((prev) => Math.min(45, prev + 1))
                     }
                   >
                     +
@@ -147,27 +149,31 @@ const Dashboardp1 = () => {
             </div>
           )}
 
-          {selectedFeature === "Sound" && (
+          {selectedFeature === "Lights" && (
             <div className="temperature-control">
-              <h4>Sound</h4>
+              <h4>Lights</h4>
               <div className="temp-container">
-                <span className="temp-label">05 dB</span>
+                <span className="temp-label">100 Lux</span>
                 <div className="temp-display">
                   <button
                     className="minus-btn"
-                    onClick={() => setSound((prev) => Math.max(5, prev - 1))}
+                    onClick={() =>
+                      setLights((prev) => Math.max(100, prev - 100))
+                    }
                   >
                     -
                   </button>
-                  <span className="temp-value">{sound}dB</span>
+                  <span className="temp-value">{lights}Lux</span>
                   <button
                     className="plus-btn"
-                    onClick={() => setSound((prev) => Math.min(50, prev + 1))}
+                    onClick={() =>
+                      setLights((prev) => Math.min(5000, prev + 100))
+                    }
                   >
                     +
                   </button>
                 </div>
-                <span className="temp-label">50 dB</span>
+                <span className="temp-label">5000 Lux </span>
               </div>
             </div>
           )}
@@ -200,15 +206,6 @@ const Dashboardp1 = () => {
               </div>
             </div>
           )}
-
-          {selectedFeature === "Lights" && (
-            <div className="temperature-control">
-              <h4>Lights</h4>
-              <p>
-                Current Status: <strong>{lightsOn ? "ON" : "OFF"}</strong>
-              </p>
-            </div>
-          )}
         </div>
       </div>
 
@@ -232,7 +229,11 @@ const Dashboardp1 = () => {
             </select>
           </div>
           <div className="chart-container">
-            <p>📊 Chart goes here</p>
+            <p>
+              {" "}
+              =
+              <img src={grahp} alt="image" className="grahp" />
+            </p>
           </div>
         </div>
       </div>

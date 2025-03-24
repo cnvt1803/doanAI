@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "../styles/loginmain.css";
 import image from "../images/loginimage.png";
 import logo from "../images/logo.png";
@@ -12,6 +13,11 @@ const LoginText = () => {
     e.preventDefault();
     console.log("Email:", email);
     console.log("Password:", password);
+  };
+  const navigate = useNavigate();
+
+  const handlep1 = () => {
+    navigate("/page1");
   };
 
   return (
@@ -65,7 +71,7 @@ const LoginText = () => {
               <a href="#">Quên mật khẩu?</a>
             </div>
 
-            <button type="submit" className="login-button">
+            <button type="submit" className="login-button" onClick={handlep1}>
               Đăng nhập
             </button>
           </form>

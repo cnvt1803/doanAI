@@ -1,9 +1,15 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import "../styles/login.css";
 import "../styles/footer.css";
 import logo from "../images/logo.png";
 import logotruong from "../images/logotruong.png";
 function Login() {
+  const navigate = useNavigate();
+
+  const handleclick = () => {
+    navigate("/loginmain");
+  };
   return (
     <div className="page-container">
       {/* Header */}
@@ -15,8 +21,12 @@ function Login() {
           <img src={logo} alt="Paws Logo" className="login-logo" />
           <div className="line"></div>
           <p className="login-text">Đăng nhập với tư cách</p>
-          <button className="login-button">User</button>
-          <button className="login-button">Admin</button>
+          <button className="login-button" onClick={handleclick}>
+            User
+          </button>
+          <button className="login-button" onClick={handleclick}>
+            Admin
+          </button>
         </div>
       </div>
       <div className="footer">

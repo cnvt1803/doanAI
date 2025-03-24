@@ -256,12 +256,12 @@ input:checked + .slider:before {
 }
 
 .temp-label:first-of-type {
-  left: -70px;
+  left: -100px;
   color: #666;
 }
 
 .temp-label:last-of-type {
-  right: -70px;
+  right: -100px;
   color: #ff5733;
 }
 
@@ -300,7 +300,7 @@ input:checked + .slider:before {
 }
 /* Health Monitoring */
 .health-monitoring {
-  background: #e6f7ff;
+  background: #ffffff;
   padding: 20px;
   border-radius: 10px;
   height: 460px;
@@ -314,6 +314,10 @@ input:checked + .slider:before {
   align-items: center;
   background: white;
   border-radius: 10px;
+}
+.grahp{
+  width: 100%;
+  height: auto;
 }
 /* Nút +/- của Temperature & Humidity */
 .temp-display button {

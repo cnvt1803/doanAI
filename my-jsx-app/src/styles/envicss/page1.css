@@ -1,0 +1,12 @@
+.page {
+    display: flex;
+    height: 100vh; 
+  }
+  
+  .main {
+    flex-grow: 1;  
+    width: calc(100% - 250px); 
+    overflow-x: hidden;
+    background-color: #ffffff; 
+  }
+  
