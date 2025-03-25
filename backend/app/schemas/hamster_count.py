@@ -1,14 +1,15 @@
 from pydantic import BaseModel
 from datetime import datetime
 
-class HamsterBehaviorBase(BaseModel):
+class HamsterCountBase(BaseModel):
     device_id: int
-    activity: str
+    has_stranger: bool
+    count: int
 
-class HamsterBehaviorCreate(HamsterBehaviorBase):
+class HamsterCountCreate(HamsterCountBase):
     pass
 
-class HamsterBehaviorResponse(HamsterBehaviorBase):
+class HamsterCountResponse(HamsterCountBase):
     id: int
     recorded_at: datetime
 

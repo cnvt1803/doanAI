@@ -13,3 +13,4 @@ class User(Base):
     created_at = Column(DateTime, default=datetime.utcnow)
 
     devices = relationship("Device", back_populates="owner", cascade="all, delete", lazy="joined")
+    notifications = relationship("Notification", back_populates="user", cascade="all, delete", lazy="joined")

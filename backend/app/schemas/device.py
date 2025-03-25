@@ -8,6 +8,7 @@ class DeviceTypeEnum(str, enum.Enum):
     humidity = "humidity_type"
     light = "light_type"
     sound = "sound_type"
+    camera = "camera_type"
 
 class DeviceStatus(str, enum.Enum):
     active = "active"
