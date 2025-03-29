@@ -7,6 +7,7 @@ import Page1 from "./pages/pageone/page1";
 import Notification from "./pages/notification/notification";
 import Envi from "./pages/enviromental/enviromental";
 import Graph from "./pages/graph/graph";
+import Health from "./pages/health/health";
 
 const App = () => {
   return (
@@ -19,6 +20,7 @@ const App = () => {
         <Route path="/notification" element={<Notification />} />
         <Route path="/enviromental" element={<Envi />} />
         <Route path="/graph" element={<Graph />} />
+        <Route path="/health-monitoring" element={<Health />} />
       </Routes>
     </Router>
   );
