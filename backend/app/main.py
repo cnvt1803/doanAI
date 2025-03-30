@@ -1,7 +1,10 @@
 from fastapi import FastAPI
 from app.controllers import user, device, param_data, data_analysis, hamster_behavior, notifications, hamster_count
+from app.jobs.jobs import scheduler
 
 app = FastAPI()
+
+scheduler.start()
 
 app.include_router(user.router)
 app.include_router(device.router)
