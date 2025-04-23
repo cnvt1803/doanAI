@@ -1,5 +1,7 @@
 pip install -r requirements.txt
 
+docker-compose build
+
 docker-compose up -d
 
-uvicorn app.main:app --reload
+python -m app.models.base
