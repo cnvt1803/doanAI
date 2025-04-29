@@ -4,7 +4,8 @@ from app.database import SessionLocal
 from app.models.param_data import ParamData
 
 USERNAME = ""
-BASE_URL = f"https://io.adafruit.com/api/v2/{USERNAME}/feeds"
+KEY = ""
+BASE_URL = f""
 # FEED_ID = "bbc-temp"
 
 FEEDS = {
