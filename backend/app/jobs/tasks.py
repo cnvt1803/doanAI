@@ -5,7 +5,7 @@ from app.models.param_data import ParamData
 
 USERNAME = ""
 KEY = ""
-BASE_URL = f""
+BASE_URL = f"https://io.adafruit.com/api/v2/{USERNAME}/feeds"
 # FEED_ID = "bbc-temp"
 
 FEEDS = {
