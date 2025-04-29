@@ -3,8 +3,8 @@ from datetime import datetime
 from app.database import SessionLocal
 from app.models.param_data import ParamData
 
-USERNAME = "truong1803aaa"
-KEY = "aio_NmvB45goWVYjYTYK4SmJ3JIP1Gc1"
+USERNAME = ""
+KEY = ""
 BASE_URL = f"https://io.adafruit.com/api/v2/{USERNAME}/feeds"
 # FEED_ID = "bbc-temp"
 
