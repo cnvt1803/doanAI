@@ -11,6 +11,8 @@
   display: grid;
   grid-template-columns: 1fr 1fr; /* Chia làm 2 cột */
   grid-template-rows: auto auto; /* 2 hàng */
+  overflow-y: auto; 
+  height: calc(100vh - 88px);
 }
 
 .left-column {
@@ -27,23 +29,29 @@
 .dashboard-container {
   display: flex;
   justify-content: center;
-  gap: 40px;
-  padding: 20px;
+  width: 100%; 
+  gap: 60px; /* cách đều giữa các card */
+  padding: 100px;
 }
 
 .sensor-card {
   background: #e0f3ff;
-  padding: 20px;
-  border-radius: 15px;
-  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+  padding: 30px 20px;
+  border-radius: 20px;
+  box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.1);
   text-align: center;
-  width: 150px;
+  width: 220px !important ;
+  height: 174px !important;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 h3 {
-  font-size: 16px;
+  font-size: 18px;
   color: #4a4a4a;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
 }
 
 .gauge {
@@ -55,9 +63,11 @@ h3 {
   align-items: center;
   justify-content: center;
   font-weight: bold;
+  font-size: 18px;
   position: relative;
 }
 
+/* Border color riêng cho từng loại */
 .temperature {
   border: 5px solid #ff8c42;
 }
@@ -69,6 +79,7 @@ h3 {
 .light {
   border: 5px solid #a349a4;
 }
+
 
 /* Hamster's Room */
 .hamster-room-envi {

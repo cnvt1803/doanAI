@@ -31,13 +31,11 @@ const Dashboard = () => {
       <div className="right-column">
         <div className="warning-card-noti">
           <h3>⚠️ Warning:</h3>
-          <div className="warning-box-noti"> Thông báo 1</div>
-          <div className="warning-box-noti"> Thông báo 2</div>
-          <div className="warning-box-noti"> Thông báo 3</div>
-          <div className="warning-box-noti"> Thông báo 4</div>
-          <div className="warning-box-noti"> Thông báo 5 </div>
-          <div className="warning-box-noti"> Thông báo 6</div>
-          <div className="warning-box-noti"> Thông báo 7</div>
+          <div className="warning-box-noti">
+            {" "}
+            Trong phòng có nhiều hơn một hamster
+          </div>
+          <div className="warning-box-noti"> Thiết bị ổn định</div>
         </div>
       </div>
     </div>

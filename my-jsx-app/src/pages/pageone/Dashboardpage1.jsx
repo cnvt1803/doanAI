@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "../../styles/pageonecss/Dashboardpage1.css";
 import image from "../../images/hill1.png";
-import grahp from "../../images/grahp.jpg";
+import room from "../../images/room.png";
 
 const Dashboardp1 = () => {
   const [selectedFeature, setSelectedFeature] = useState(null);
@@ -144,7 +144,7 @@ const Dashboardp1 = () => {
                     +
                   </button>
                 </div>
-                <span className="temp-label">35°C</span>
+                <span className="temp-label">40°C</span>
               </div>
             </div>
           )}
@@ -216,23 +216,15 @@ const Dashboardp1 = () => {
           <h3>⚠️ Warning:</h3>
           <div className="warning-box"></div>
           <div className="warning-box"></div>
+          <div className="warning-box"></div>
         </div>
 
         {/* Giám sát sức khỏe */}
-        <div className="health-monitoring">
-          <div className="group">
-            <h3>Health Monitoring</h3>
-            <select className="dropdown">
-              <option>Monthly</option>
-              <option>Weekly</option>
-              <option>Daily</option>
-            </select>
-          </div>
+        <div className="room-hamster">
+          <h3 className="title-h">Hamster Room</h3>
           <div className="chart-container">
             <p>
-              {" "}
-              =
-              <img src={grahp} alt="image" className="grahp" />
+              <img src={room} alt="image" className="grahp" />
             </p>
           </div>
         </div>

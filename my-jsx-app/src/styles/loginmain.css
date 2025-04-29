@@ -51,12 +51,12 @@
   }
   
   /* Văn bản */
-  .content {
+  .content-login {
     width: 52%;
     text-align: center;
   }
   
-  .title {
+  .title-login {
     color: #00B7FF;
     font-size: 36px;
     font-weight: bold;

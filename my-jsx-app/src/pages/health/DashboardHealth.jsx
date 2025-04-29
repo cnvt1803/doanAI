@@ -6,12 +6,23 @@ import graph3 from "../../images/grahp.jpg"; // Biểu đồ cho Temperature
 import graph4 from "../../images/grahp.jpg"; // Biểu đồ cho Calories burned
 
 const Dashboard = () => {
-  const [selectedTab, setSelectedTab] = useState("stress");
-
   // Trạng thái riêng biệt cho từng dropdown
-  const [activityTimeframe, setActivityTimeframe] = useState("Daily");
-  const [sleepTimeframe, setSleepTimeframe] = useState("Weekly");
-  const [wellnessTimeframe, setWellnessTimeframe] = useState("Weekly");
+  const [selectedTab, setSelectedTab] = useState("object");
+  const [uploadedImage, setUploadedImage] = useState(null);
+
+  const handleImageUpload = (event) => {
+    const file = event.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setUploadedImage(reader.result);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+  const [temperature, setTemperature] = useState(25);
+  const [humidity, setHumidity] = useState(50);
+  const [lights, setLights] = useState(2000);
   const [healthTimeframe, setHealthTimeframe] = useState("Daily");
   const graphImages = {
     stress: graph1,
@@ -24,113 +35,99 @@ const Dashboard = () => {
     <div className="dashboard">
       {/* Cột bên trái */}
       <div className="left-column">
-        <div className="stats-container">
-          {/* ACTIVITY */}
-          <div className="stat-card">
-            <p>ACTIVITY</p>
-            <div className="dropdown">
-              <button className="dropdown-btn">{activityTimeframe} ⌄</button>
-              <div className="dropdown-content">
-                <span onClick={() => setActivityTimeframe("Daily")}>Daily</span>
-                <span onClick={() => setActivityTimeframe("Weekly")}>
-                  Weekly
-                </span>
-                <span onClick={() => setActivityTimeframe("Monthly")}>
-                  Monthly
-                </span>
-              </div>
-            </div>
-            <div className="progress-circle red">
-              <span>25%</span>
+        <div className="dashboard-container">
+          <div className="sensor-card">
+            <h3>Temperature</h3>
+            <div className="gauge temperature">
+              <span>{temperature}°C</span>
             </div>
           </div>
 
-          {/* SLEEP */}
-          <div className="stat-card">
-            <p>SLEEP</p>
-            <div className="dropdown">
-              <button className="dropdown-btn">{sleepTimeframe} ⌄</button>
-              <div className="dropdown-content">
-                <span onClick={() => setSleepTimeframe("Daily")}>Daily</span>
-                <span onClick={() => setSleepTimeframe("Weekly")}>Weekly</span>
-                <span onClick={() => setSleepTimeframe("Monthly")}>
-                  Monthly
-                </span>
-              </div>
-            </div>
-            <div className="progress-circle green">
-              <span>79%</span>
+          <div className="sensor-card">
+            <h3>Humidity</h3>
+            <div className="gauge humidity">
+              <span>{humidity}%</span>
             </div>
           </div>
 
-          {/* WELLNESS */}
-          <div className="stat-card">
-            <p>WELLNESS</p>
-            <div className="dropdown">
-              <button className="dropdown-btn">{wellnessTimeframe} ⌄</button>
-              <div className="dropdown-content">
-                <span onClick={() => setWellnessTimeframe("Daily")}>Daily</span>
-                <span onClick={() => setWellnessTimeframe("Weekly")}>
-                  Weekly
-                </span>
-                <span onClick={() => setWellnessTimeframe("Monthly")}>
-                  Monthly
-                </span>
-              </div>
-            </div>
-            <div className="progress-circle yellow">
-              <span>52%</span>
+          <div className="sensor-card">
+            <h3>Light</h3>
+            <div className="gauge light">
+              <span>{lights} Lux</span>
             </div>
           </div>
         </div>
 
         {/* Biểu đồ Health Monitoring */}
         <div className="health-monitoring">
-          <h3>HEALTH MONITORING</h3>
-          <div className="tabs">
-            <div className="l-c">
+          <div className="header-ana">
+            <h3>ANALYSIS</h3>
+            <button className="analyze-btn">Analysis ➔</button>
+          </div>
+
+          <div className="tabs-upload">
+            <div className="tabs">
               <button
-                className={selectedTab === "stress" ? "active" : ""}
-                onClick={() => setSelectedTab("stress")}
+                className={selectedTab === "object" ? "active" : ""}
+                onClick={() => setSelectedTab("object")}
               >
-                💙 Stress level
+                Object Anomaly Detection
               </button>
               <button
-                className={selectedTab === "pulse" ? "active" : ""}
-                onClick={() => setSelectedTab("pulse")}
+                className={selectedTab === "dynamic" ? "active" : ""}
+                onClick={() => setSelectedTab("dynamic")}
               >
-                ⚡ Pulse
-              </button>
-              <button
-                className={selectedTab === "temperature" ? "active" : ""}
-                onClick={() => setSelectedTab("temperature")}
-              >
-                🌡️ Temperature
-              </button>
-              <button
-                className={selectedTab === "calories" ? "active" : ""}
-                onClick={() => setSelectedTab("calories")}
-              >
-                🔥 Calories burned
+                Dynamic analysis
               </button>
             </div>
-            <div className="r-c">
-              <div className="dropdown-2">
-                <button className="dropdown-btn-2">{healthTimeframe} ⌄</button>
-                <div className="dropdown-content-2">
-                  <span onClick={() => setHealthTimeframe("Daily")}>Daily</span>
-                  <span onClick={() => setHealthTimeframe("Weekly")}>
-                    Weekly
-                  </span>
-                  <span onClick={() => setHealthTimeframe("Monthly")}>
-                    Monthly
-                  </span>
+
+            <div className="upload">
+              <input
+                type="file"
+                accept="image/*"
+                id="upload"
+                onChange={handleImageUpload}
+                style={{ display: "none" }}
+              />
+              <label htmlFor="upload" className="upload-btn">
+                Upload +
+              </label>
+            </div>
+          </div>
+
+          <div className="content">
+            <div className="left-panel">
+              {uploadedImage ? (
+                <img
+                  src={uploadedImage}
+                  alt="Uploaded"
+                  className="uploaded-img"
+                />
+              ) : (
+                <div className="placeholder">Upload an image to analyze</div>
+              )}
+            </div>
+
+            <div className="right-panel">
+              <div className="result-box">
+                <h4>Result</h4>
+                <div className="result-item">
+                  22/04/2025 16:29 pm
+                  <br />
+                  <span>Hamster is active</span>
+                </div>
+                <div className="result-item">
+                  22/04/2025 16:29 pm
+                  <br />
+                  <span>No Anomalies Detected</span>
+                </div>
+                <div className="result-item">
+                  22/04/2025 16:29 pm
+                  <br />
+                  <span>No Anomalies Detected</span>
                 </div>
               </div>
             </div>
-          </div>
-          <div className="chart">
-            <img src={graphImages[selectedTab]} alt="Health Chart" />
           </div>
         </div>
       </div>
@@ -140,16 +137,18 @@ const Dashboard = () => {
         <div className="report-section">
           <h3>Report</h3>
           <select>
-            <option>Ngày: 20/02/2025</option>
+            <option>Ngày: 23/04/2025</option>
           </select>
           <div className="report-list">
-            {Array(12)
-              .fill("Hamster Room 1 hoạt động 5h")
-              .map((item, index) => (
-                <div key={index} className="report-item">
-                  ⚡ {item}
-                </div>
-              ))}
+            {[
+              "Hamster đang hoạt động",
+              "Có 2 hamster trong phòng",
+              "Hamster hoạt động không giống thói quen thường ngày",
+            ].map((item, index) => (
+              <div key={index} className="report-item">
+                ⚡ {item}
+              </div>
+            ))}
           </div>
         </div>
       </div>

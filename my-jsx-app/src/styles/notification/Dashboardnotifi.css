@@ -11,6 +11,8 @@
   display: grid;
   grid-template-columns: 1fr 1fr; /* Chia làm 2 cột */
   grid-template-rows: auto auto; /* 2 hàng */
+  overflow-y: auto; 
+  height: calc(100vh - 88px);
 }
 
 .left-column {

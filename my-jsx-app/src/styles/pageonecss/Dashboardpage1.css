@@ -11,6 +11,8 @@
   display: grid;
   grid-template-columns: 1fr 1fr; /* Chia làm 2 cột */
   grid-template-rows: auto auto; /* 2 hàng */
+  overflow-y: auto; 
+  height: calc(100vh - 88px);
 }
 
 .left-column {
@@ -271,7 +273,7 @@ input:checked + .slider:before {
   background: #fdd9b5;
   padding: 20px;
   border-radius: 10px;
-  height: 270px;
+  height: 340px;
 }
 .warning-box {
   width: 100%;
@@ -285,7 +287,8 @@ input:checked + .slider:before {
   align-items: center;
   justify-content: left;
   gap: 10px;
-  color: #999; /* Màu chữ nhạt khi không có nội dung */
+  color: #000000; /* Màu chữ nhạt khi không có nội dung */
+  overflow-y: auto !important;
 }
 
 .warning-box::before {
@@ -293,17 +296,13 @@ input:checked + .slider:before {
   color: #999;
 }
 
-.group{
-  display: flex;
-  justify-content: space-between;
-  margin-bottom:20px;
-}
 /* Health Monitoring */
-.health-monitoring {
+.room-hamster {
+  flex-direction: column;
   background: #ffffff;
   padding: 20px;
   border-radius: 10px;
-  height: 460px;
+  height: 350px !important;
 }
 
 /* Biểu đồ */

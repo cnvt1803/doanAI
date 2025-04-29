@@ -217,26 +217,19 @@ const Dashboardp1 = () => {
       {/* Cột bên phải */}
       <div className="right-column">
         {/* Thẻ cảnh báo */}
-        <div className="staticTem">
-          <h3>Statistics Temperature</h3>
-          <div className="chart-container">
-            <p>
-              {" "}
-              =
-              <img src={grahp2} alt="image" className="grahp" />
-            </p>
-          </div>
+        {/* Thẻ cảnh báo */}
+        <div className="warning-card">
+          <h3>⚠️ Warning:</h3>
+          <div className="warning-box">Nhiệt độ quá ngưỡng</div>
+          <div className="warning-box">Độ ẩm ổn định</div>
+          <div className="warning-box">Ánh sáng bình thường</div>
         </div>
 
         {/* Giám sát sức khỏe */}
-        <div className="staticLight">
-          <h3>Statistics of Light</h3>
+        <div className="room-hamster">
+          <h3 className="title-h">Hamster Room</h3>
           <div className="chart-container">
-            <p>
-              {" "}
-              =
-              <img src={grahp} alt="image" className="grahp" />
-            </p>
+            <p>{/* <img src={room} alt="image" className="grahp" /> */}</p>
           </div>
         </div>
       </div>

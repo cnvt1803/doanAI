@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
 import "../../styles/graph/Dashboardgraph.css";
-import grahp from "../../images/grahp.jpg";
-import grahp2 from "../../images/graph2.png";
-import grahp3 from "../../images/graph3.jpg";
+import grahp from "../../images/anhsang.jpg";
+import grahp2 from "../../images/nhietdo.jpg";
+import grahp3 from "../../images/doam.jpg";
 
 const Dashboardp1 = () => {
-  const [temperature, setTemperature] = useState(25);
-  const [humidity, setHumidity] = useState(50);
-  const [lights, setLights] = useState(2000);
+  const [temperature, setTemperature] = useState(28.2);
+  const [humidity, setHumidity] = useState(57.2);
+  const [lights, setLights] = useState(2342);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -37,9 +37,7 @@ const Dashboardp1 = () => {
           <h3>Statistics of Temperature</h3>
           <div className="chart-container">
             <p>
-              {" "}
-              =
-              <img src={grahp2} alt="image" className="grahp" />
+              <img src={grahp2} alt="image" className="grahp-nd" />
             </p>
           </div>
         </div>

@@ -66,13 +66,13 @@
 }
 
 /* Văn bản */
-.content {
+.content-home {
   width: 60%;
   text-align: center;
   margin-right: 30px;
 }
 
-.title {
+.title-home {
   color: #00B7FF;
   font-size: 42px;
   font-weight: bold;

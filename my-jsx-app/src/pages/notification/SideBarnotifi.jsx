@@ -33,9 +33,8 @@ const Sidebar = () => {
         <h3>ANALYTICS</h3>
         <ul>
           <li onClick={() => navigate("/health-monitoring")}>
-            📊 Health monitoring
+            📊 Behavioral Analytic
           </li>
-          <li onClick={() => navigate("/observed-data")}>🌐 Observed Data</li>
         </ul>
       </div>
 
@@ -50,21 +49,11 @@ const Sidebar = () => {
         </ul>
       </div>
 
-      {/* AUTOMATION */}
-      <div className="menu-section">
-        <h3>Automation</h3>
-        <ul>
-          <li onClick={() => navigate("/food-supply")}>
-            🍽️ Food & Beverage Supply
-          </li>
-        </ul>
-      </div>
-
       {/* HELP */}
       <div className="menu-section">
         <h3>HELP</h3>
         <ul>
-          <li onClick={() => navigate("/settings")}>⚙️ Settings</li>
+          <li onClick={() => navigate("/chatbot")}>🤖 Chatbot</li>
           <li className="logout" onClick={() => navigate("/")}>
             🚪 Log Out
           </li>

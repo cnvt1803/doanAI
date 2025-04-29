@@ -24,8 +24,8 @@ const Home = () => {
 
       {/* Content */}
       <div className="body">
-        <div className="content">
-          <h2 className="title">
+        <div className="content-home">
+          <h2 className="title-home">
             Trường đại học Bách Khoa - Đại học Quốc Gia TPHCM
           </h2>
           <h2 className="title1">Hamster Care</h2>

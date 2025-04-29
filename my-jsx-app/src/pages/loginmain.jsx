@@ -31,8 +31,8 @@ const LoginText = () => {
 
       {/* Content */}
       <div className="body">
-        <div className="content">
-          <h2 className="title">
+        <div className="content-login">
+          <h2 className="title-login">
             Trường đại học Bách Khoa - Đại học Quốc Gia TPHCM
           </h2>
           <h2 className="title1">Hamster Care</h2>

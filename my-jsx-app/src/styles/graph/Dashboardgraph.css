@@ -11,6 +11,8 @@
   display: grid;
   grid-template-columns: 1fr 1fr; /* Chia làm 2 cột */
   grid-template-rows: auto auto; /* 2 hàng */
+  overflow-y: auto; 
+  height: calc(100vh - 88px);
 }
 
 .left-column {
@@ -129,6 +131,11 @@ h3 {
 .grahp{
   width: 100%;
   height: auto;
+}
+.grahp-nd{
+  width: 60% !important;
+  height: 238 !important;
+  margin-left: 80px !important;
 }
 
 

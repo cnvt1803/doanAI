@@ -9,6 +9,7 @@ class DeviceTypeEnum(str, enum.Enum):
     humidity = "humidity_type"
     light = "light_type"
     sound = "sound_type"
+    camera = "camera_type"
 
 class DeviceStatus(str, enum.Enum):
     active = "active"
@@ -26,3 +27,6 @@ class Device(Base):
 
     owner = relationship("User", back_populates="devices", lazy="joined")
     params = relationship("ParamData", back_populates="device", cascade="all, delete", lazy="joined")
+    data_analysis = relationship("DataAnalysis", back_populates="device", cascade="all, delete", lazy="joined")
+    hamster_behaviors = relationship("HamsterBehavior", back_populates="device", cascade="all, delete", lazy="joined")
+    hamster_counts = relationship("HamsterCount", back_populates="device", cascade="all, delete", lazy="joined")
