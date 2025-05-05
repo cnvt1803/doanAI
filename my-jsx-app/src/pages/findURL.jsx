@@ -23,7 +23,7 @@ const URLApp = () => {
 
     try {
       // Gửi yêu cầu POST tới API Flask
-      const response = await fetch("http://localhost:5001/api/search-google", {
+      const response = await fetch("http://127.0.0.1:8000/api/search-google", {
         method: "POST",
         headers: {
           "Content-Type": "application/x-www-form-urlencoded",

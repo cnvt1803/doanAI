@@ -10,21 +10,69 @@ const Dashboardp1 = () => {
   const [lights, setLights] = useState(2000);
 
   useEffect(() => {
-    const fetchData = async () => {
+    const fetchTemperature = async () => {
       try {
-        const response = await fetch("http://127.0.0.1:5001/api/data");
+        const response = await fetch(
+          "http://127.0.0.1:8000/param_data/device/5/latest"
+        );
         const data = await response.json();
-
-        setTemperature(data.temperature);
-        setHumidity(data.humidity);
-        setLights(data.lights);
+        console.log("Temperature response:", data.value);
+        const tempValue = parseFloat(data.value); // Sử dụng parseFloat để chuyển thành số thực
+        if (!isNaN(tempValue)) {
+          setTemperature(tempValue);
+        } else {
+          console.error("Invalid temperature value:", data.value);
+        }
       } catch (error) {
-        console.error("Lỗi khi lấy dữ liệu:", error);
+        console.error("Lỗi khi lấy nhiệt độ:", error);
       }
     };
 
-    fetchData();
-    const interval = setInterval(fetchData, 5000); // Cập nhật mỗi 5 giây
+    const fetchHumidity = async () => {
+      try {
+        const response = await fetch(
+          "http://127.0.0.1:8000/param_data/device/7/latest"
+        );
+        const data = await response.json();
+        console.log("Humidity response:", data.value);
+        const humidityValue = parseFloat(data.value); // Chuyển thành số thực
+        if (!isNaN(humidityValue)) {
+          setHumidity(humidityValue);
+        } else {
+          console.error("Invalid humidity value:", data.value);
+        }
+      } catch (error) {
+        console.error("Lỗi khi lấy độ ẩm:", error);
+      }
+    };
+
+    const fetchLight = async () => {
+      try {
+        const response = await fetch(
+          "http://127.0.0.1:8000/param_data/device/8/latest"
+        );
+        const data = await response.json();
+        console.log("Light response:", data.value);
+        const lightValue = parseFloat(data.value); // Chuyển thành số thực
+        if (!isNaN(lightValue)) {
+          setLights(lightValue);
+        } else {
+          console.error("Invalid light value:", data.value);
+        }
+      } catch (error) {
+        console.error("Lỗi khi lấy ánh sáng:", error);
+      }
+    };
+
+    fetchTemperature();
+    fetchHumidity();
+    fetchLight();
+
+    const interval = setInterval(() => {
+      fetchTemperature();
+      fetchHumidity();
+      fetchLight();
+    }, 15000); // Cập nhật mỗi 5 giây
 
     return () => clearInterval(interval);
   }, []);
@@ -214,9 +262,42 @@ const Dashboardp1 = () => {
         {/* Thẻ cảnh báo */}
         <div className="warning-card">
           <h3>⚠️ Warning:</h3>
-          <div className="warning-box"></div>
-          <div className="warning-box"></div>
-          <div className="warning-box"></div>
+
+          {/* Cảnh báo nhiệt độ */}
+          <div
+            className="warning-box"
+            style={{ color: temperature > 33 ? "red" : "inherit" }}
+          >
+            {temperature > 33
+              ? "🌡️ Nhiệt độ đang quá ngưỡng"
+              : temperature < 25
+              ? "🌡️ Nhiệt độ đang thấp "
+              : " "}
+          </div>
+
+          {/* Cảnh báo độ ẩm */}
+          <div
+            className="warning-box"
+            style={{ color: humidity > 70 ? "red" : "inherit" }}
+          >
+            {humidity > 70
+              ? "💧 Độ ẩm đang quá cao"
+              : humidity < 30
+              ? "💧 Độ ẩm đang quá thấp"
+              : " "}
+          </div>
+
+          {/* Cảnh báo ánh sáng */}
+          <div
+            className="warning-box"
+            style={{ color: lights > 2500 ? "red" : "inherit" }}
+          >
+            {lights > 2500
+              ? "💡 Ánh sáng đang quá mạnh"
+              : lights < 1000
+              ? "💡 Ánh sáng yếu hơn ngưỡng ổn định"
+              : " "}
+          </div>
         </div>
 
         {/* Giám sát sức khỏe */}

@@ -10,21 +10,52 @@ const Dashboardp1 = () => {
   const [lights, setLights] = useState(2000);
 
   useEffect(() => {
-    const fetchData = async () => {
+    console.log("🛠 useEffect chạy");
+    const fetchTemperature = async () => {
       try {
-        const response = await fetch("http://127.0.0.1:5001/api/data");
+        const response = await fetch(
+          "http://127.0.0.1:8000/param_data/device/5/latest"
+        );
         const data = await response.json();
-
-        setTemperature(data.temperature);
-        setHumidity(data.humidity);
-        setLights(data.lights);
+        console.log("Humidity response:", data.value);
+        setTemperature(Number(data.value));
       } catch (error) {
-        console.error("Lỗi khi lấy dữ liệu:", error);
+        console.error("Lỗi khi lấy nhiệt độ:", error);
       }
     };
 
-    fetchData();
-    const interval = setInterval(fetchData, 5000); // Cập nhật mỗi 5 giây
+    const fetchHumidity = async () => {
+      try {
+        const response = await fetch(
+          "http://127.0.0.1:8000/param_data/device/7/latest"
+        );
+        const data = await response.json();
+        setHumidity(data.value);
+      } catch (error) {
+        console.error("Lỗi khi lấy độ ẩm:", error);
+      }
+    };
+    const fetchLight = async () => {
+      try {
+        const response = await fetch(
+          "http://127.0.0.1:8000/param_data/device/8/latest"
+        );
+        const data = await response.json();
+        setLights(data.value);
+      } catch (error) {
+        console.error("Lỗi khi lấy ánh sáng:", error);
+      }
+    };
+
+    fetchTemperature();
+    fetchHumidity();
+    fetchLight();
+
+    const interval = setInterval(() => {
+      fetchTemperature();
+      fetchHumidity();
+      fetchLight();
+    }, 5000); // Cập nhật mỗi 5 giây
 
     return () => clearInterval(interval);
   }, []);
@@ -217,12 +248,35 @@ const Dashboardp1 = () => {
       {/* Cột bên phải */}
       <div className="right-column">
         {/* Thẻ cảnh báo */}
-        {/* Thẻ cảnh báo */}
         <div className="warning-card">
           <h3>⚠️ Warning:</h3>
-          <div className="warning-box">Nhiệt độ quá ngưỡng</div>
-          <div className="warning-box">Độ ẩm ổn định</div>
-          <div className="warning-box">Ánh sáng bình thường</div>
+
+          {/* Cảnh báo nhiệt độ */}
+          <div className="warning-box">
+            {temperature > 33
+              ? "🌡️ Nhiệt độ đang quá cao"
+              : temperature < 25
+              ? "🌡️ Nhiệt độ thấp hơn ngưỡng ổn định"
+              : "🌡️ Nhiệt độ ổn định"}
+          </div>
+
+          {/* Cảnh báo độ ẩm */}
+          <div className="warning-box">
+            {humidity > 70
+              ? "💧 Độ ẩm đang quá cao"
+              : humidity < 30
+              ? "💧 Độ ẩm thấp hơn ngưỡng ổn định"
+              : "💧 Độ ẩm ổn định"}
+          </div>
+
+          {/* Cảnh báo ánh sáng */}
+          <div className="warning-box">
+            {lights > 3000
+              ? "💡 Ánh sáng đang quá mạnh"
+              : lights < 1000
+              ? "💡 Ánh sáng yếu hơn ngưỡng ổn định"
+              : "💡 Ánh sáng bình thường"}
+          </div>
         </div>
 
         {/* Giám sát sức khỏe */}

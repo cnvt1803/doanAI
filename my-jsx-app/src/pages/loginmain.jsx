@@ -8,16 +8,38 @@ import logotruong from "../images/logotruong.png";
 const LoginText = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log("Email:", email);
-    console.log("Password:", password);
-  };
+  const [error, setError] = useState("");
   const navigate = useNavigate();
 
-  const handlep1 = () => {
-    navigate("/page1");
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setError(""); // reset lỗi trước khi gọi
+
+    try {
+      const response = await fetch("http://127.0.0.1:8000/users/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, password }),
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        setError(errorData.detail || "Email hoặc mật khẩu không đúng");
+        return;
+      }
+
+      const data = await response.json();
+      console.log("✅ Login success:", data);
+
+      // Optional: lưu user vào localStorage/sessionStorage nếu cần
+      localStorage.setItem("user", JSON.stringify(data));
+
+      // Điều hướng sau khi đăng nhập thành công
+      navigate("/page1");
+    } catch (err) {
+      console.error("Lỗi khi gọi API đăng nhập:", err);
+      setError("Không thể kết nối đến server");
+    }
   };
 
   return (
@@ -63,6 +85,11 @@ const LoginText = () => {
               required
             />
 
+            {/* Hiển thị lỗi nếu có */}
+            {error && (
+              <p style={{ color: "red", marginTop: "10px" }}>{error}</p>
+            )}
+
             <div className="remember-forgot">
               <div className="remember">
                 <input type="checkbox" id="remember" />
@@ -71,7 +98,7 @@ const LoginText = () => {
               <a href="#">Quên mật khẩu?</a>
             </div>
 
-            <button type="submit" className="login-button" onClick={handlep1}>
+            <button type="submit" className="login-button">
               Đăng nhập
             </button>
           </form>

@@ -1,31 +1,33 @@
-.dashboard {
-  flex: 1;
-  width: calc(100% - 280px); /* Trừ đi chiều rộng Sidebar */
+.dashboard-GR {
+  width: calc(100% - 280px);
   position: fixed;
   top: 88px;
-  left: 280px; /* Đảm bảo không bị sidebar che */
+  left: 280px;
   padding: 20px;
-  gap: 20px;
   background: #f8f9fa;
-  flex-direction: column;
   display: grid;
-  grid-template-columns: 1fr 1fr; /* Chia làm 2 cột */
-  grid-template-rows: auto auto; /* 2 hàng */
-  overflow-y: auto; 
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto;
+  gap: 20px;
+  overflow-y: auto;
   height: calc(100vh - 88px);
 }
 
-.left-column {
+
+.left-column-GR {
+  grid-column: 1 / 2;
   display: flex;
   flex-direction: column;
   gap: 20px;
 }
 
-.right-column {
+.right-column-GR {
+  grid-column: 2 / 3;
   display: flex;
   flex-direction: column;
-  gap: 40px;
+  gap: 20px;
 }
+
 .staticTemGraph {
   background: #ffffff;
   padding: 20px;
@@ -132,11 +134,12 @@ h3 {
   width: 100%;
   height: auto;
 }
-.grahp-nd{
+.grahp-nd {
   width: 60% !important;
-  height: 238 !important;
+  height: 238px !important;
   margin-left: 80px !important;
 }
+
 
 
 

@@ -3,7 +3,6 @@ from sqlalchemy.orm import relationship
 import datetime
 from app.database import Base
 
-
 class HamsterCount(Base):
     __tablename__ = "hamster_count"
 
@@ -13,5 +12,4 @@ class HamsterCount(Base):
     count = Column(Integer, nullable=False, default=0)
     recorded_at = Column(DateTime, default=datetime.datetime.utcnow)
 
-    device = relationship(
-        "Device", back_populates="hamster_counts", lazy="joined")
+    device = relationship("Device", back_populates="hamster_counts", lazy="joined")

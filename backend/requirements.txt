@@ -6,4 +6,12 @@ python-dotenv
 pydantic[email]
 email-validator
 apscheduler
-
+torch
+torchvision
+torchaudio
+scikit-learn
+matplotlib
+django-cors-headers
+python-multipart
+ultralytics
+scikit-image
